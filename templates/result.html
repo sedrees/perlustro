@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if result %}
+        {% for result in result %}
+            <a href="{{ url_for('details', isbn=result.isbn) }}">{{ result.title }} - {{ result.author }}</a>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+        <form action="{{ url_for('search') }}" method="post">
+            <input type="text" name="query" placeholder="Type an ISBN, title or author">
+            <button>Submit</button>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+$not-white:#f2f1ec;
+$purple:#4A2F61;
+$purple-dark:#170F1F;
+$purple-light:#845EA6;
+$green:#2F6130;
+
+
+body {
+    background-color:$not-white;
+    font-family:'Libre Baskerville', serif;
+}
+
+header  {
+    padding:1.5em 0;
+    border-bottom:1px solid $purple-dark;
+    a {
+        font-size:1.5em;
+        color:$purple-light;
+        &:hover {
+            color:$purple;
+        }
+        img {
+            height:1.5em;
+            margin-right:5px;
+        }
+    }
+}

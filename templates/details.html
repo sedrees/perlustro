@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if book %}
+        <h1>{{ book.title }}</h1>
+        <h2>By {{ book.author }} in {{ book.published }}</h2> 
+        <h3>ISBN {{book.isbn}}</h3>
+        <form action="" method="post">
+            <h2>Review {{ book.title }}</h2>
+            <textarea name="review"></textarea>
+            <button>Submit Review</button>
+        </form>
+        <h2>Goodreads Data</h2>
+        {% if gr_rating %}
+            <p>{{ gr_rating }}/5 stars from {{gr_count}} Goodreads users.</p>
+        {% else %}
+            <p>No Goodreads rating data available.</p>
+        {% endif %}
+    {% else %}
+        <p>No book selected.</p>
+        <form action="{{ url_for('search') }}" method="post">
+            <input type="text" name="query" placeholder="Type an ISBN, title or author">
+            <button>Submit</button>
+        </form>
+    {% endif %}
+{% endblock %}

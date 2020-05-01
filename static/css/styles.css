@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+/* line 9, ../../../CS50WEB2020/project1/sass/styles.scss */
+body {
+  background-color: #f2f1ec;
+  font-family: 'Libre Baskerville', serif; }
+
+/* line 14, ../../../CS50WEB2020/project1/sass/styles.scss */
+header {
+  padding: 1.5em 0;
+  border-bottom: 1px solid #170F1F; }
+  /* line 17, ../../../CS50WEB2020/project1/sass/styles.scss */
+  header a {
+    font-size: 1.5em;
+    color: #845EA6; }
+    /* line 20, ../../../CS50WEB2020/project1/sass/styles.scss */
+    header a:hover {
+      color: #4A2F61; }
+    /* line 23, ../../../CS50WEB2020/project1/sass/styles.scss */
+    header a img {
+      height: 1.5em;
+      margin-right: 5px; }
+
+/*# sourceMappingURL=styles.css.map */

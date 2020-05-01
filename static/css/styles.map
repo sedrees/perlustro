@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"../../sass/styles.scss"
+	],
+	"sourcesContent": [
+		"@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');\r\n$not-white:#f2f1ec;\r\n$purple:#4A2F61;\r\n$purple-dark:#170F1F;\r\n$purple-light:#845EA6;\r\n$green:#2F6130;\r\n\r\n\r\nbody {\r\n    background-color:$not-white;\r\n    font-family:'Libre Baskerville', serif;\r\n}\r\n\r\nheader  {\r\n    padding:1.5em 0;\r\n    border-bottom:1px solid $purple-dark;\r\n    a {\r\n        font-size:1.5em;\r\n        color:$purple-light;\r\n        &:hover {\r\n            color:$purple;\r\n        }\r\n        img {\r\n            height:1.5em;\r\n            margin-right:5px;\r\n        }\r\n    }\r\n}"
+	],
+	"names": [],
+	"mappings": "AAAA,OAAO,CAAC,0GAAI;;AAQZ,AAAA,IAAI,CAAC;EACD,gBAAgB,EART,OAAO;EASd,WAAW,EAAC,0BAA0B,GACzC;;;AAED,AAAA,MAAM,CAAE;EACJ,OAAO,EAAC,OAAO;EACf,aAAa,EAAC,GAAG,CAAC,KAAK,CAZd,OAAO,GAwBnB;;EAdD,AAGI,MAHE,CAGF,CAAC,CAAC;IACE,SAAS,EAAC,KAAK;IACf,KAAK,EAdC,OAAO,GAsBhB;;IAbL,AAMQ,MANF,CAGF,CAAC,AAGI,MAAM,CAAC;MACJ,KAAK,EAlBT,OAAO,GAmBN;;IART,AASQ,MATF,CAGF,CAAC,CAMG,GAAG,CAAC;MACA,MAAM,EAAC,KAAK;MACZ,YAAY,EAAC,GAAG,GACnB"
+}

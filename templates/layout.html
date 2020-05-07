@@ -8,10 +8,20 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css')}}">
     </head>
     <body>
-        <header class="container-fluid">
-            <a href="{{url_for('index')}}"><img src="{{ url_for('static', filename='fa/svgs/solid/book.svg') }}">Perlustro</a>
+        <header>
+            <div class="container-xl">
+                <a href="{{url_for('search')}}"><img src="{{ url_for('static', filename='fa/svgs/solid/book.svg') }}">Perlustro</a>
+            </div>
         </header>
-        {% block body %}
-        {% endblock %}
+        <section class="container-xl content">
+            {% block body %}
+            {% endblock %}
+        </section>
+        <footer>
+            <section class="container-xl">
+                {% block footer %}
+                {% endblock %}
+            </section>
+        </footer>
     </body>
 </html>

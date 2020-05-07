@@ -1,23 +1,159 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
-/* line 9, ../../../CS50WEB2020/project1/sass/styles.scss */
+/* line 8, ../../../CS50WEB2020/project1/sass/styles.scss */
+html, body {
+  height: 100%; }
+
+/* line 10, ../../../CS50WEB2020/project1/sass/styles.scss */
 body {
   background-color: #f2f1ec;
-  font-family: 'Libre Baskerville', serif; }
+  font-family: 'Libre Baskerville', serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+  /* line 16, ../../../CS50WEB2020/project1/sass/styles.scss */
+  body .content {
+    flex: 1; }
 
-/* line 14, ../../../CS50WEB2020/project1/sass/styles.scss */
+/* line 21, ../../../CS50WEB2020/project1/sass/styles.scss */
 header {
   padding: 1.5em 0;
   border-bottom: 1px solid #170F1F; }
-  /* line 17, ../../../CS50WEB2020/project1/sass/styles.scss */
+  /* line 24, ../../../CS50WEB2020/project1/sass/styles.scss */
   header a {
     font-size: 1.5em;
     color: #845EA6; }
-    /* line 20, ../../../CS50WEB2020/project1/sass/styles.scss */
+    /* line 28, ../../../CS50WEB2020/project1/sass/styles.scss */
     header a:hover {
-      color: #4A2F61; }
-    /* line 23, ../../../CS50WEB2020/project1/sass/styles.scss */
+      color: #4A2F61;
+      text-decoration: none; }
+    /* line 32, ../../../CS50WEB2020/project1/sass/styles.scss */
     header a img {
       height: 1.5em;
       margin-right: 5px; }
+
+/* line 39, ../../../CS50WEB2020/project1/sass/styles.scss */
+h1 {
+  color: #170F1F; }
+
+/* line 43, ../../../CS50WEB2020/project1/sass/styles.scss */
+h2 {
+  color: #4A2F61;
+  margin: 1em 0 0.5em; }
+
+/* line 48, ../../../CS50WEB2020/project1/sass/styles.scss */
+textarea {
+  width: 330px;
+  margin-bottom: 1em; }
+
+/* line 53, ../../../CS50WEB2020/project1/sass/styles.scss */
+.jumbotron {
+  background-color: #edece7; }
+
+/* line 57, ../../../CS50WEB2020/project1/sass/styles.scss */
+.form-as-content {
+  max-width: 400px;
+  margin: 1rem auto;
+  font-size: 0.8em; }
+  /* line 61, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-as-content input {
+    padding: 2em 1em; }
+  /* line 64, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-as-content button {
+    background-color: #2F6130;
+    margin: 2rem 0; }
+    /* line 67, ../../../CS50WEB2020/project1/sass/styles.scss */
+    .form-as-content button:hover {
+      background-color: #2c5e2d; }
+
+/* line 74, ../../../CS50WEB2020/project1/sass/styles.scss */
+.form-register input {
+  margin: 0.75em 0; }
+
+/* line 80, ../../../CS50WEB2020/project1/sass/styles.scss */
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+
+/* line 85, ../../../CS50WEB2020/project1/sass/styles.scss */
+.form-signin input[type="password"] {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+
+/* line 91, ../../../CS50WEB2020/project1/sass/styles.scss */
+.form-search {
+  margin-top: 1em; }
+  /* line 93, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-search input {
+    display: inline-block;
+    width: 85%; }
+  /* line 97, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-search button {
+    display: inline-block;
+    border-radius: 4px;
+    background: url("../fa/svgs/solid/search.svg") center center no-repeat;
+    background-size: 24px;
+    border: 1px solid #2F6130;
+    vertical-align: middle;
+    width: calc(1.5em + .75rem + 2px);
+    height: calc(1.5em + .75rem + 2px);
+    margin-top: -3px; }
+
+/* line 110, ../../../CS50WEB2020/project1/sass/styles.scss */
+.list-group-item {
+  background: none; }
+
+/* line 115, ../../../CS50WEB2020/project1/sass/styles.scss */
+.book h1 {
+  margin: 1em 0 0; }
+
+/* line 118, ../../../CS50WEB2020/project1/sass/styles.scss */
+.book .byline {
+  color: #4A2F61;
+  line-height: 2;
+  margin-bottom: 0; }
+
+/* line 125, ../../../CS50WEB2020/project1/sass/styles.scss */
+.smaller {
+  font-size: 0.75rem;
+  font-weight: 800; }
+
+/* line 130, ../../../CS50WEB2020/project1/sass/styles.scss */
+.form-review {
+  padding-bottom: 1.5em; }
+  /* line 132, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-review button {
+    max-width: 330px; }
+  /* line 135, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-review label {
+    font-size: 0.75em; }
+  /* line 138, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-review input {
+    margin-top: 0.4rem;
+    margin-right: 0.5rem;
+    margin-left: 0; }
+  /* line 143, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-review p {
+    margin-bottom: 0.5rem; }
+  /* line 146, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-review .form-check-inline {
+    margin-bottom: 1.5rem;
+    width: 100%; }
+
+/* line 152, ../../../CS50WEB2020/project1/sass/styles.scss */
+footer {
+  width: 100%;
+  height: 3em;
+  line-height: 3em;
+  background-color: #e3e2dd;
+  flex-shrink: 0; }
+  /* line 157, ../../../CS50WEB2020/project1/sass/styles.scss */
+  footer section {
+    text-align: center; }
+
+@media (min-width: 576px) {
+  /* line 162, ../../../CS50WEB2020/project1/sass/styles.scss */
+  .form-review .form-check-inline {
+    width: auto; } }
 
 /*# sourceMappingURL=styles.css.map */

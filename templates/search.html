@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
-    <form action="" method="post">
-        <input type="text" name="query" placeholder="Type an ISBN, title or author">
-        <button>Submit</button>
-    </form>
+    <section class="jumbotron">
+        <h1>Browse here:</h1>
+        <form class="form-search" action="" method="post">
+            <input type="text" name="query" placeholder="Type an ISBN, title or author" class="form-control">
+            <button></button>
+        </form>
+    </section>
+{% endblock %}
+{% block footer %}
+    <a href="{{ url_for('logout') }}">Logout</a>
 {% endblock %}

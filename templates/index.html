@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 {% block body %}
-    <a href="{{ url_for('reg') }}">Register</a>
-    <a href="{{ url_for('login') }}">Login</a>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>Welcome.</h1>
+            <form class="form-signin form-as-content" method="post" action="{{url_for('login')}}">
+                <input type="text" name="username" placeholder="Username" class="form-control">
+                <input type="password" name="password" placeholder="Password" class="form-control">
+                <button class="btn btn-lg btn-block btn-primary">Sign in</button>
+                <p>Not yet a member? <a href="{{ url_for('reg') }}">Register</a></p>
+            </form>
+        </div>
+    </section>
 {% endblock %}

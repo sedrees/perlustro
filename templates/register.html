@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-    <form action="" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="confirm" placeholder="Confirm password">
-        <button>Submit</button>
-    </form>
+    <section class="jumbotron text-center">
+        <h1>Thank you for joining!</h1>
+        <form class="form-register form-as-content" action="" method="post">
+            <input type="text" name="username" placeholder="Username" class="form-control">
+            <input type="password" name="password" placeholder="Password" class="form-control">
+            <input type="password" name="confirm" placeholder="Confirm password" class="form-control">
+            <button class="btn btn-lg btn-block btn-primary">Submit</button>
+        </form>
+    </section>
 {% endblock %}

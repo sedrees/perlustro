@@ -2,6 +2,7 @@ import os, requests
 
 from flask import Flask, session, render_template, request, redirect, json, jsonify
 from flask_session import Session
+from functools import wraps
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
@@ -33,13 +34,25 @@ def get_gr_info(isbn):
     data =[gr_rating, gr_count]
     return data
 
+# Decorate routes to require login
+def login_required(f):
+    """
+    Decorate routes to require login.
+    http://flask.pocoo.org/docs/1.0/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return redirect("/")
+        return f(*args, **kwargs)
+    return decorated_function
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/register", methods=["GET","POST"])
 def reg():
-
     # Forget any user_id
     session.clear()
 
@@ -83,7 +96,6 @@ def reg():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     session.clear()
-
     if request.method == "POST":
 
         username = request.form.get("username")
@@ -111,13 +123,14 @@ def login():
         return redirect("/search")
 
     else: 
-        return render_template("login.html")
+        return redirect("/")
 
 @app.route("/error")
 def error():
     return render_template("error.html", message=message)
 
 @app.route("/search", methods=["GET", "POST"])
+@login_required
 def search():
     if request.method == "POST":
         query = request.form.get("query")
@@ -133,19 +146,31 @@ def search():
         return render_template("search.html")
 
 @app.route("/details", methods=["GET", "POST"])
+@login_required
 def details():
+    def get_reviews(isbn):
+        reviews = db.execute("SELECT content from reviews WHERE isbn = :isbn", {"isbn": isbn}).fetchall()
+        # Apparently there are characters I can't see in the database that need stripped from this output.
+        f_reviews=[]
+        for review in reviews:
+            new = str(review)
+            f_reviews.append(new.strip("(),"))
+        return f_reviews
+
     isbn = request.args.get("isbn")
     book = db.execute("SELECT * from books WHERE isbn = :isbn", {"isbn": isbn}).fetchone()
-
+    reviews = get_reviews(isbn)
     if request.method == "POST":
         review = request.form.get("review")
-        if review:
-            db.execute("INSERT INTO reviews (isbn, content, user_id) VALUES (:isbn, :content, :user_id)",
-                        {"isbn": isbn, "content": review, "user_id": session['user_id']})
+        rating = request.form.get("rating")
+        if review and rating:
+            db.execute("INSERT INTO reviews (isbn, content, user_id, rating) VALUES (:isbn, :content, :user_id, :rating)",
+                        {"isbn": isbn, "content": review, "user_id": session['user_id'], "rating":rating})
             db.commit()
-        return render_template("details.html", book = book, gr_rating = get_gr_info(isbn)[0], gr_count = get_gr_info(isbn)[1])
+        reviews = get_reviews(isbn)
+        return render_template("details.html", book = book, gr_rating = get_gr_info(isbn)[0], gr_count = get_gr_info(isbn)[1], reviews = reviews)
     else:
-        return render_template("details.html", book = book, gr_rating = get_gr_info(isbn)[0], gr_count = get_gr_info(isbn)[1])
+        return render_template("details.html", book = book, gr_rating = get_gr_info(isbn)[0], gr_count = get_gr_info(isbn)[1], reviews = reviews)
 
 @app.route("/api/<string:isbn>")
 def book_api(isbn):
@@ -161,3 +186,9 @@ def book_api(isbn):
         "review_count":get_gr_info(isbn)[1],
         "average_score":get_gr_info(isbn)[0]
     })
+
+@app.route("/logout")
+@login_required
+def logout():
+    session.clear()
+    return redirect("/")

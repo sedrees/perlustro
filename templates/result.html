@@ -1,14 +1,20 @@
 {% extends "layout.html" %}
 {% block body %}
     {% if result %}
+        <h2>Books found:</h2>
+        <ul class="list-group list-group-flush">
         {% for result in result %}
-            <a href="{{ url_for('details', isbn=result.isbn) }}">{{ result.title }} - {{ result.author }}</a>
+            <li class="list-group-item"><a href="{{ url_for('details', isbn=result.isbn) }}">{{ result.title }} - {{ result.author }}</a></li>
         {% endfor %}
+        </ul>
     {% else %}
-        <p>No results found.</p>
-        <form action="{{ url_for('search') }}" method="post">
-            <input type="text" name="query" placeholder="Type an ISBN, title or author">
-            <button>Submit</button>
+        <h2>No results found.</h2>
+        <form class="form-search" action="{{url_for('search')}}" method="post">
+            <input type="text" name="query" placeholder="Type an ISBN, title or author" class="form-control">
+            <button></button>
         </form>
     {% endif %}
+{% endblock %}
+{% block footer %}
+    <a href="{{ url_for('logout') }}">Logout</a>
 {% endblock %}

@@ -1,25 +1,67 @@
 {% extends "layout.html" %}
 {% block body %}
     {% if book %}
-        <h1>{{ book.title }}</h1>
-        <h2>By {{ book.author }} in {{ book.published }}</h2> 
-        <h3>ISBN {{book.isbn}}</h3>
-        <form action="" method="post">
-            <h2>Review {{ book.title }}</h2>
-            <textarea name="review"></textarea>
-            <button>Submit Review</button>
-        </form>
-        <h2>Goodreads Data</h2>
-        {% if gr_rating %}
-            <p>{{ gr_rating }}/5 stars from {{gr_count}} Goodreads users.</p>
-        {% else %}
-            <p>No Goodreads rating data available.</p>
-        {% endif %}
+        <div class="row book">
+            <div class="col-8">
+                <h1>{{ book.title }}</h1>
+                <p class="byline">By {{ book.author }} in {{ book.published }}</p> 
+                <p class="smaller">ISBN {{book.isbn}}</p>
+                <h2>Goodreads Data</h2>
+                {% if gr_rating %}
+                    <p>{{ gr_rating }}/5 stars from {{gr_count}} Goodreads users.</p>
+                {% else %}
+                    <p>No Goodreads rating data available.</p>
+                {% endif %}
+                <form class="form-review" action="" method="post">
+                    <h2>Review {{ book.title }}</h2>
+                    
+                    <p>How would you describe this book?</p>
+
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" value="1">
+                        <label class="form-check-label" for="rating_1">Waste of time</label>
+                    </div>
+
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" value="2">
+                        <label class="form-check-label" for="rating_2">Reluctantly finished it</label>
+                    </div>
+
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" value="3">
+                        <label class="form-check-label" for="rating_3">It was okay</label>
+                    </div>
+
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" value="4">
+                        <label class="form-check-label" for="rating_4">I liked it</label>
+                    </div>
+
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" value="5" checked>
+                        <label class="form-check-label" for="rating_5">I loved it!</label>
+                    </div>
+
+                    <p>Why do you feel that way?</p>
+                    <textarea rows="5" name="review"></textarea>
+                    <button class="btn btn-lg btn-block btn-primary">Submit Review</button>
+                </form>
+            </div>
+            <div class="col">
+                <h2>Perlustro Reviews</h2>
+                {% for review in reviews %}
+                    <p>{{ review }}</p>
+                {% endfor %}
+            </div>           
+        </div>
     {% else %}
-        <p>No book selected.</p>
+        <h2>No book selected.</h2>
         <form action="{{ url_for('search') }}" method="post">
             <input type="text" name="query" placeholder="Type an ISBN, title or author">
             <button>Submit</button>
         </form>
     {% endif %}
+{% endblock %}
+{% block footer %}
+    <a href="{{ url_for('logout') }}">Logout</a>
 {% endblock %}
